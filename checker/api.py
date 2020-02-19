@@ -3,14 +3,9 @@ from . import serializers
 from rest_framework import viewsets
 from rest_framework.response import Response
 from utils.cheapest_amount_calculator import find_cheapest_amount
-from django.conf import settings
-from django.core.cache.backends.base import DEFAULT_TIMEOUT
 from django.core.cache import cache
 from rest_framework import status
-
-CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
-
-CURRENCIES = ('usd', 'eur', 'gbp')
+from utils.constants import CURRENCIES, CACHE_TTL
 
 
 class ProviderViewSet(viewsets.ModelViewSet):
